@@ -4,6 +4,7 @@ namespace CustomersApi.Objects
 {
     public class CustomerObject
     {
+        #region Properties
         [Key]
         public int Id { get; set; }
 
@@ -39,6 +40,6 @@ namespace CustomersApi.Objects
         [Required]
         [MaxLength(200)]
         public string PhoneNumber { get; set; }
-
+        #endregion
     }
 }
