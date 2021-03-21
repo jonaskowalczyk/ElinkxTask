@@ -124,7 +124,7 @@ For finding all customers: ../api/Customers
 For finding one customer by their ID: ../api/Customers/"ID" (with no quotation marks)
 For adding new customer: /api/Customers
 
-To make this works, you have to add one header: Content-Type and Value: application/json to it.
+To make this works, you have to add one header: Content-Type and Value: application/json into it.
 Then you can just write down the information of your customer. Data has to be in JSON format.
 
 You can use this for instance:
