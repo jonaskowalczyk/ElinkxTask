@@ -6,7 +6,7 @@ Customer's api documentation:
 
 This API uses linux docker containers. It is connected to the local MSSQL server for docker. If you want to connect api to another database, edit connection string in appsettings.json.
 
-If you want to use local MSSQL server for linux, you can use script, which is placed in CustomersApi folder. To open this script, run power shell in the same location, where you have downloaded the script.
+If you want to use local MSSQL server for linux, you can use script, which is placed in CustomersApi folder. To open and run this script, run power shell in the same location, where you have downloaded the script.
 
 Type:
 
