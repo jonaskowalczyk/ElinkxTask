@@ -1,22 +1,19 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+#Get base SDK Image from Microsoft
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS base
+WORKDIR /app
+
+#Copy the CSPROJ file and restore any dependecies (via NUGET)
+COPY *.csproj ./
+RUN dotnet restore
+
+#Copy the project file and build our release
+COPY . .
+RUN dotnet publish -c Release -o out
+
+#Generate runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /src
-COPY ["CustomersApi/CustomersApi.csproj", "CustomersApi/"]
-RUN dotnet restore "CustomersApi/CustomersApi.csproj"
-COPY . .
-WORKDIR "/src/CustomersApi"
-RUN dotnet build "CustomersApi.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "CustomersApi.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=base /app/out .
 ENTRYPOINT ["dotnet", "CustomersApi.dll"]
