@@ -118,7 +118,9 @@ VALUES
 11, 'Světlana', 'Mojmírová', 36, 'Žena', 'Životická 25', 'Mokré Lazce', '72584', 'svetlanamojmirova@seznam.cz', '742879168'
 );
 
-Now you can run the API and see, how it works. You can use Postman for testing.
+Now you can run the API from VS or use command "docker run -p 8080 jonaskowalczyk/customersapi" (To download it from the my own docker hub repository and run it locally using docker) and see, how it works. You can use Postman for testing.
+
+Open your browser and type http://localhost:8080/api/Customers and see, if everything works.
 
 For finding all customers: ../api/Customers
 For finding one customer by their ID: ../api/Customers/"ID" (with no quotation marks)
